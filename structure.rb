@@ -38,6 +38,10 @@ class Line
 
   def stops
     @line.keys.each { |stop| puts stop }
+  end
+
+  def stop_number(station_name)[:stop]
+    @line[station_name][:stop]
   end 
 
 end 
@@ -62,6 +66,15 @@ class MTA
     line_instance.stops
   end 
 
+  def calculate_distance(starting_line, starting_stop, ending_line, ending_stop)
+    if starting_line == ending_line
+      distance = (@trains[starting_line].stop_number(starting_stop) - @trains[ending_line].stop_number(ending_stop)).abs
+      puts distance
+    else
+
+    end 
+        
+  end 
 
 end 
 
@@ -72,7 +85,7 @@ the_6 = Line.new("6 Train", ["Grand Central", "33rd Street", "28th Street", "23r
 
 the_suck = MTA.new([the_l, the_n, the_6])
 #the_suck.lines 
-the_suck.stop_list("L Train")
+the_suck.calculate_distance("L Train", "Union Square", "L Train", "3rd Ave")
 
 
 #stations is a hash - each stop has a name (key) and a 2nd hash as a value, where each key is a transfer point, and each value the number of stops from that transfer point
