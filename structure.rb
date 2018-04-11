@@ -86,14 +86,6 @@ class MTA
 end 
 
 
-the_l = Line.new("L Train", ["6th Street", "8th Street", "Union Square", "3rd Ave", "1st Ave"], ["Union Square"])
-the_n = Line.new("N Train", ["TImes Square", "34th Street", "28th Street", "23rd Street", "Union Square", "8th Street"], ["Union Square"])
-the_6 = Line.new("6 Train", ["Grand Central", "33rd Street", "28th Street", "23rd Street", "Union Square", "Astor Place"], ["Union Square"])
-
-the_suck = MTA.new([the_l, the_n, the_6])
-#the_suck.lines 
-the_suck.calculate_distance("L Train", "Union Square", "6 Train", "Grand Central")
-
 
 #stations is a hash - each stop has a name (key) and a 2nd hash as a value, where each key is a transfer point, and each value the number of stops from that transfer point
 
