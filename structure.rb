@@ -7,6 +7,7 @@ class Line
     @stations_list = stations_list
     @transfer_points = transfer_points
     self.find_stop
+    self.distance_from_transfer
   end
 
   def find_stop
@@ -18,10 +19,21 @@ class Line
 
   def distance_from_transfer
     #find each transfer point stop number
+    @transfer_points.each do |transfer|
+      station_hash = @line[transfer]
+      transfer_stop_number = station_hash[:stop]
+      @line.keys.each do |station| 
+        station_stop_number = @line[station][:stop]
+        distance = (station_stop_number - transfer_stop_number).abs
+        @line[station][:transfer_point] = {name: transfer, distance: distance}
+      end  
+    end 
     #iterate through stops and subtract transfer point stop from each stop
     #save the absolute value as the distance from transfer point
     #put in line hash
-  end 
+  end
+
+
 
   def stops
     @line.keys.each { |stop| puts stop }
