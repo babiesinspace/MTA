@@ -36,6 +36,10 @@ elsif input == 'calculate'
   ending_line = ARGV[3]
   ending_stop = station_key[ARGV[4]]
   the_suck.calculate_distance(starting_line, starting_stop, ending_line, ending_stop)
+elsif input == 'keys'
+  station_key.keys.each {|key| puts "for #{station_key[key]} type #{key}"}
+else
+  puts "Sorry, that is an invalid input. Please type: lines, stops (followed by the line), or calculate (followed by the starting line, starting station, ending line, and ending station. To see a list of station codes and their corresponding stop - type keys"
 end 
   
 
