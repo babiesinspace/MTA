@@ -45,6 +45,3 @@ elsif input == 'keys'
 else
   puts help_message
 end 
-  
-
-# the_suck.calculate_distance("L", "Union Square", "6", "Grand Central")

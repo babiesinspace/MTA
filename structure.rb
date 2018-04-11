@@ -48,7 +48,7 @@ class Line
     @line.keys.each { |stop| puts stop }
   end
 
-  def stop_number(station_name)[:stop]
+  def stop_number(station_name)
     @line[station_name][:stop]
   end 
 
