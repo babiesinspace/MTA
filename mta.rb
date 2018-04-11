@@ -15,7 +15,7 @@ station_key = {
   "astor_place" => "Astor Place"
 }
 
-
+help_message = "Sorry, that is an invalid input. Please type: lines, stops (followed by the line), or calculate (followed by the starting line, starting station, ending line, and ending station. To see a list of station codes and their corresponding stop - type keys"
 
 the_l = Line.new("L", ["6th Street", "8th Street", "Union Square", "3rd Ave", "1st Ave"], ["Union Square"])
 the_n = Line.new("N", ["Times Square", "34th Street", "28th Street", "23rd Street", "Union Square", "8th Street"], ["Union Square"])
@@ -35,11 +35,15 @@ elsif input == 'calculate'
   starting_stop = station_key[ARGV[2]]
   ending_line = ARGV[3]
   ending_stop = station_key[ARGV[4]]
-  the_suck.calculate_distance(starting_line, starting_stop, ending_line, ending_stop)
+  if [starting_line, starting_stop, ending_line, ending_stop].include?(nil)
+    puts help_message
+  else
+    the_suck.calculate_distance(starting_line, starting_stop, ending_line, ending_stop)
+  end 
 elsif input == 'keys'
   station_key.keys.each {|key| puts "for #{station_key[key]} type #{key}"}
 else
-  puts "Sorry, that is an invalid input. Please type: lines, stops (followed by the line), or calculate (followed by the starting line, starting station, ending line, and ending station. To see a list of station codes and their corresponding stop - type keys"
+  puts help_message
 end 
   
 
